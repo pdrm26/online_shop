@@ -31,7 +31,8 @@ class OrderItem(models.Model):
         related_name='items',
         on_delete=models.CASCADE
     )
-    product = models.DecimalField(max_digits=10, decimal_places=2)
+    product = models.ForeignKey(
+        'shop.product', related_name='order_items', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
 
